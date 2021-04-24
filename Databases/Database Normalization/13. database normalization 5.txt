@@ -1,0 +1,28 @@
+Consider the following relation and determinants.
+
+R(a, b,c,d)
+
+                   a,c -> b,d
+                   a,d -> b
+        Also, a,b is a primary key for the above relation.
+The above relation is in x NF form where x may take the following values {1,2,3,3.5} corresponding to {1NF, 2NF, 3NF and BCNF} respectively.
+What is the maximum possible value of x such that the above relation satisfies the *x*NF form?
+Your answer should only be restricted to one of these numbers:1/2/3/3.5 Do not leave any leading or trailing spaces.
+
+
+-> 3nf. 
+
+For R to be in BCNF, in all functional dependencies (X->Y), determinant must be a candidate key, i.e. X must be a candidate key (or, simply a key. Caution: It can not be a superkey, it must be a candidate key).
+
+Now, in the question, there are three FDs (functional dependencies). Let's list them down: 1. ab -> cd 2. ac -> bd 3. ad -> b
+
+In (1), ab is primary key (given) so it is a candidate key. So, (1) satisfies BCNF. In (2), ac can uniquely determine all of the rest of attributes, i.e. bd. So, it must be a candidate key as well. Therefore, (2) satisfies BCNF. In (3), ad is not a candidate key, because it does not uniquely determine rest of the attributes (it determines only b).
+
+So, in (3) ad is not a candidate key, therefore BCNF is not satisfied.
+
+Note, that R is in 3NF. 3NF holds if for every FD:X->A in the relation - (i) X is a superkey of R, or (ii) A is a prime attribute of R So, in (1) ab is the superkey, in (2) ac is the superkey, and in (3) b is a prime attribute (i.e. b is a subset of a candidate key). 
+So, R is in 3NF.
+
+
+
+

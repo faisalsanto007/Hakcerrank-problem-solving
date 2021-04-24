@@ -1,0 +1,35 @@
+Let us take the example of a simple movie library. Each movie has a description, director, and serial number. 
+Customers have a name, address, and membership number. Assume only one copy of each movie exists in the library. 
+We are given the following relations and determinants. The keys for each relation are CAPITALIZED.
+
+    Relations (The key is CAPITALIZED):
+    customer(name,addr,MEMBERNO)
+    movie(DESCRIPTION,director,serialno)
+    borrow(memberno,DATE,SERIALNO)
+
+    Determinants:
+    description->director,serialno
+    serialno->description
+    serialno->director
+    name,addr -> memberno
+    memberno -> name,addr
+    serialno,date -> memberno
+
+The above relation is in x**NF form where x may take the following values {1,2,3,3.5} corresponding to {1NF, 2NF, 3NF and BCNF} respectively.
+What is the maximum possible value of **x such that the above relation satisfies the *x*NF form?
+Your answer should only be restricted to one of these numbers:1/2/3/3.5 Do not leave any leading or trailing spaces.
+
+
+-> 2nf. 
+The requirement for 2NF is that it is in 1NF (essentially, everything is atomic - there are not multiple entries on a 
+column, nor repeating columns, such as customer1, customer2, customer 3) PLUS all non-key values are dependant on 
+primary key/s (within the context of the relationships within the tables, not necessarily in real life). 
+The list of determinants shows that this is the case, so it meets this bar.
+
+The requirement for 3NF is that there is no TRANSITIVE DEPENDENCE (a column does not rely on the value of another 
+column through an intermediary column). The issue is with the column movie. The "director" is dependent on "serialno", 
+which itself is dependent on "description" (A->B + B->C = A->C). So there is a transitive dependence here.
+
+
+
+
